@@ -24,8 +24,11 @@
             ],
             "styles": [
               "src/styles.css"
+              
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -97,5 +100,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "cc9dc91c-4a60-4db9-bc9a-5b9b8c4d0017"
   }
 }

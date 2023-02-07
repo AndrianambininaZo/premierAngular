@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <p>Listes des produit</p>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="rechercheFormGroup" (ngSubmit)="handelSearch()">
+                <div class="input-group">
+                    <label for="text" class="input-group-text">Keyword</label>
+                    <input type="text" class="form-control" formControlName="keyword">
+                    <button class="btn btn-info">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </form>
+            
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Prix</th>
+                        <th>Status</th>
+                        <th *ngIf="autheservice.hasRole('ADMIN')">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of produit">
+                        <td>{{p.id}}</td>
+                        <td>{{p.id}}</td>
+                        <td>{{p.nom}}</td>
+                        <td>{{p.prix}}</td>
+                        <td></td>
+                        <td *ngIf="autheservice.hasRole('ADMIN')">
+                            <button (click)="handleDelete(p)"class="btn btn-danger">Supprimer</button>
+                            <button class="btn btn-success">Editer</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <ul class="nav nav-pills">
+                <li *ngFor="let item of [].constructor(this.totalPages) let i=index">
+                    <a  (click)="gotoPage(i)" [ngClass]="i==currentPage?'btn-info':'btn-outline-info'" class="btn  ms-1 mt-1">{{i}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+</div>
